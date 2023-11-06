@@ -49,12 +49,11 @@ const DataTable = () => {
 
             <tbody>
             {sortedData.map((item) => (
-                    <DataItem
-                        key={item.name}
-                        item={item}
-                    />
-                ))
-            }
+                <DataItem
+                    key={item.name}
+                    item={item}
+                />
+            ))}
             </tbody>
         </table>
     );
