@@ -1,28 +1,58 @@
-import styles from './DataTable.module.css'
+import {useSelector} from "react-redux";
+import DataItem from "../DataItem/DataItem";
+import {useState} from "react";
+
+const DataTable = () => {
+    const data = useSelector(state => state.data)
+    const [sortBy, setSortBy] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
 
 
-const DataTable = ({ data }) => {
+    const sortData = (field) => {
+        return [...data].sort((a, b) => {
+            if (field === 'height' || field === 'weight') {
+                return sortOrder === 'asc' ? a[field] - b[field] : b[field] - a[field];
+            } else {
+                if (a[field] < b[field]) {
+                    return sortOrder === 'asc' ? -1 : 1;
+                }
+                if (a[field] > b[field]) {
+                    return sortOrder === 'asc' ? 1 : -1;
+                }
+                return 0;
+            }
+        });
+    };
+
+    const handleSort = (field) => {
+        setSortBy(field);
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    };
+
+    const sortedData = sortBy ? sortData(sortBy) : data;
+
     return (
         <table>
             <thead>
-            <tr>
-                <th>Имя</th>
-                <th>Рост</th>
-                <th>Вес</th>
-                <th>Цвет волос</th>
-                <th>Цвет кожи</th>
-            </tr>
+            {data.length !== 0 &&
+                <tr>
+                    <th onClick={() => handleSort('name')}>Имя</th>
+                    <th onClick={() => handleSort('height')}>Рост</th>
+                    <th onClick={() => handleSort('mass')}>Вес</th>
+                    <th onClick={() => handleSort('hair_color')}>Цвет волос</th>
+                    <th onClick={() => handleSort('skin_color')}>Цвет кожи</th>
+                </tr>
+            }
             </thead>
+
+            {data.length === 0 && ('Нет данных')}
+
             <tbody>
-            {data.length === 0 && (<div>Нет данных</div>)}
-            {data.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.name}</td>
-                        <td>{item.height}</td>
-                        <td>{item.mass}</td>
-                        <td>{item.hair_color}</td>
-                        <td>{item.skin_color}</td>
-                    </tr>
+            {sortedData.map((item) => (
+                    <DataItem
+                        key={item.name}
+                        item={item}
+                    />
                 ))
             }
             </tbody>

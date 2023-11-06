@@ -1,17 +1,21 @@
 import styles from'./App.module.css';
 import DataTable from "./Components/Table/DataTable";
 import {useState} from "react";
+import {useDispatch, useSelector} from 'react-redux';
 
 const App = () => {
-  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch()
+  const data = useSelector(state => state.data)
+
 
   const fetchData = async () => {
     setIsLoading(true);
     try {
       const response = await fetch('https://swapi.dev/api/people/');
       const jsonData = await response.json();
-      setData(jsonData.results);
+      dispatch({type: 'SET_DATA', payload: jsonData.results})
+
     } catch (error) {
       console.log(error);
     }
@@ -19,7 +23,7 @@ const App = () => {
   };
 
   const clearData = () => {
-    setData([]);
+    dispatch({type: 'CLEAR_DATA', payload: data});
   };
 
   return (
@@ -29,9 +33,7 @@ const App = () => {
         {isLoading ? (
             <p>Загрузка данных...</p>
         ) : (
-            <DataTable
-                data={data}
-            />
+            <DataTable/>
         )}
       </div>
   );
