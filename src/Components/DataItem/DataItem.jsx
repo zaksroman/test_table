@@ -9,8 +9,7 @@ const DataItem = ({item}) => (
         <td>{item.mass}</td>
         <td>{item.hair_color}</td>
         <td>{item.skin_color}</td>
-        <Delete
-            item={item}
+        <Delete item={item}
         />
     </tr>
 );

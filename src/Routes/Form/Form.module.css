@@ -1,4 +1,4 @@
-.form_container {
+.formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,7 +7,7 @@
     background-color: #FAFAFA;
 }
 
-.form_input {
+.formInput {
     width: 80%;
     padding: 15px;
     margin-bottom: 10px;
@@ -17,7 +17,7 @@
     outline: none;
 }
 
-.form_button {
+.formButton {
     width: 80%;
     padding: 15px;
     border: none;
@@ -30,11 +30,11 @@
     margin-top: 15px;
 }
 
-.form_button.disabled {
+.disabled {
     background-color: #D3D3D3;
     cursor: not-allowed;
 }
 
-.form_button:hover:not(.disabled) {
+.formButton:hover:not(.disabled) {
     background-color: #0056b3;
 }

@@ -15,8 +15,8 @@ const Table = () => {
     }
 
     const fetchData = async () => {
-        setIsLoading(true);
         try {
+            setIsLoading(true);
             const response = await fetch('https://swapi.dev/api/people/');
             const jsonData = await response.json();
             jsonData.results.map((item) => {

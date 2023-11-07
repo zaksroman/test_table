@@ -2,7 +2,9 @@ import { createStore, applyMiddleware }  from 'redux';
 import thunk from 'redux-thunk';
 
 const initialState = {
-    data: []
+    data: [],
+    sortBy: null,
+    sortOrder: 'asc'
 }
 
 function rootReducer(state = initialState, action) {

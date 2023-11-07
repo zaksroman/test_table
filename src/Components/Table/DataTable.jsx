@@ -45,7 +45,7 @@ const DataTable = () => {
             }
             </thead>
 
-            {data.length === 0 && ('Нет данных')}
+            {data.length === 0 && <div className={styles.container}>Нет данных</div>}
 
             <tbody>
             {sortedData.map((item) => (

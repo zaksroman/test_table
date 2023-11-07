@@ -1,6 +1,6 @@
 .modal{
-    height: 100vh;
-    width: 100vh;
+    height: 100%;
+    width: 100%;
     background-color: rgba(0,0,0,0.4);
     position: fixed;
     top: 0;
@@ -8,16 +8,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 1 /*0*/;
-    pointer-events: all /*none*/;
+    opacity: 1 ;
+    pointer-events: all ;
     transition: 0.5s;
 }
 
-.modal_content {
+.modalContent {
     padding: 20px;
     border-radius: 12px;
     background-color: white;
-    transform: scale(1 /*0.5*/) ;
+    transform: scale(1) ;
     transition: 0.4s all;
 }
 

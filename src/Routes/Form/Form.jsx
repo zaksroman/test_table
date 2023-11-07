@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import styles from './Form.module.css'
+import clsx from 'clsx'
 
 const Form = () => {
 
@@ -11,8 +12,8 @@ const Form = () => {
     const [name, setName] = useState('')
     const [height, setHeight] = useState('')
     const [mass, setMass] = useState('')
-    const [hair_color, setHair_color] = useState('')
-    const [skin_color, setSkin_color] = useState('')
+    const [hairColor, setHairColor] = useState('')
+    const [skinColor, setSkinColor] = useState('')
 
     const nameHandler = (e) => {
         setName(e.target.value)
@@ -27,11 +28,11 @@ const Form = () => {
     }
 
     const hair_colorHandler = (e) => {
-        setHair_color(e.target.value)
+        setHairColor(e.target.value)
     }
 
     const skin_colorHandler = (e) => {
-        setSkin_color(e.target.value)
+        setSkinColor(e.target.value)
     }
 
     const addRow = () => {
@@ -39,8 +40,8 @@ const Form = () => {
             name: name,
             height: Number(height),
             mass: Number(mass),
-            hair_color: hair_color,
-            skin_color: skin_color
+            hair_color: hairColor,
+            skin_color: skinColor
         }
 
         dispatch({type: 'ADD_ROW', payload: newRow})
@@ -48,39 +49,42 @@ const Form = () => {
         alert('Строка успешно добавлена')
     }
 
-    const actionButton = name && height && mass && hair_color && skin_color
+    const actionButton = name && height && mass && hairColor && skinColor
 
     return (
-        <div className={styles.form_container}>
+        <div className={styles.formContainer}>
             <input
-                className={styles.form_input}
+                className={styles.formInput}
                 type="text"
                 placeholder={'Имя'}
                 onChange={nameHandler}/>
             <input
-                className={styles.form_input}
+                className={styles.formInput}
                 type="number"
                 step="1"
                 placeholder={'Рост'}
                 onChange={heightHandler}/>
             <input
-                className={styles.form_input}
+                className={styles.formInput}
                 type="number"
                 step="1"
                 placeholder={'Вес'}
                 onChange={massHandler}/>
             <input
-                className={styles.form_input}
+                className={styles.formInput}
                 type="text"
                 placeholder={'Цвет волос'}
                 onChange={hair_colorHandler}/>
             <input
-                className={styles.form_input}
+                className={styles.formInput}
                 type="text"
                 placeholder={'Цвет кожи'}
                 onChange={skin_colorHandler}/>
             <button
-                className={`${styles['form_button']} ${!actionButton ? styles.disabled : ''}`}
+                className={clsx ({
+                    [styles.formButton]: true,
+                    [styles.disabled]: !actionButton
+                })}
                 onClick={addRow}
                 disabled={!actionButton}
             >Добавить строку

@@ -25,7 +25,7 @@ const Delete = ({item}) => {
             { showModal && (
                    <div className={styles.modal}>
                         <div
-                            className={styles.modal_content}
+                            className={styles.modalContent}
                             onClick={(e) => e.stopPropagation()}
                         >
                             <p>Вы действительно хотите удалить строку?</p>
