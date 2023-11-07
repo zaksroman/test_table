@@ -11,12 +11,23 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 data: [...action.payload],
-
+                sortBy: null,
+                sortOrder: 'asc'
             };
-        case 'ADD_TO_DATA':
+        case 'ADD_ROW':
             return {
                 ...state,
                 data: [...state.data, action.payload]
+            };
+        case 'SET_SORTBY':
+            return {
+                ...state,
+                sortBy: action.payload
+            };
+        case 'SET_SORTORDER':
+            return {
+                ...state,
+                sortOrder: action.payload
             };
         case 'CLEAR_DATA':
             return {

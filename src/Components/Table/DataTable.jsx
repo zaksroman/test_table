@@ -1,11 +1,11 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import DataItem from "../DataItem/DataItem";
-import {useState} from "react";
 
 const DataTable = () => {
     const data = useSelector(state => state.data)
-    const [sortBy, setSortBy] = useState(null);
-    const [sortOrder, setSortOrder] = useState('asc');
+    const sortBy = useSelector(state => state.sortBy)
+    const sortOrder = useSelector(state => state.sortOrder)
+    const dispatch = useDispatch()
 
     const sortData = (field) => {
         return [...data].sort((a, b) => {
@@ -24,8 +24,8 @@ const DataTable = () => {
     };
 
     const handleSort = (field) => {
-        setSortBy(field);
-        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        dispatch({type: 'SET_SORTBY', payload: field})
+        dispatch({type: 'SET_SORTORDER', payload: (sortOrder === 'asc' ? 'desc' : 'asc')})
     };
 
     const sortedData = sortBy ? sortData(sortBy) : data;

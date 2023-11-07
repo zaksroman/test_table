@@ -7,7 +7,7 @@ const App = () => {
   return (
       <div>
           <Routes>
-              <Route index element={<Table/>}/>
+              <Route index path={'/'} element={<Table/>}/>
               <Route path={'/form'} element={<Form/>}/>
           </Routes>
       </div>
