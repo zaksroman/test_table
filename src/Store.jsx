@@ -19,12 +19,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 data: [...state.data, action.payload]
             };
-        case 'SET_SORTBY':
+        case 'SET_SORT_BY':
             return {
                 ...state,
                 sortBy: action.payload
             };
-        case 'SET_SORTORDER':
+        case 'SET_SORT_ORDER':
             return {
                 ...state,
                 sortOrder: action.payload

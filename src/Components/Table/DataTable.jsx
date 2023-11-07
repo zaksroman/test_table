@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import DataItem from "../DataItem/DataItem";
+import styles from './DataTable.module.css'
 
 const DataTable = () => {
     const data = useSelector(state => state.data)
@@ -24,14 +25,14 @@ const DataTable = () => {
     };
 
     const handleSort = (field) => {
-        dispatch({type: 'SET_SORTBY', payload: field})
-        dispatch({type: 'SET_SORTORDER', payload: (sortOrder === 'asc' ? 'desc' : 'asc')})
+        dispatch({type: 'SET_SORT_BY', payload: field})
+        dispatch({type: 'SET_SORT_ORDER', payload: (sortOrder === 'asc' ? 'desc' : 'asc')})
     };
 
     const sortedData = sortBy ? sortData(sortBy) : data;
 
     return (
-        <table>
+        <table className={styles.dataTable}>
             <thead>
             {data.length !== 0 &&
                 <tr>

@@ -1,6 +1,6 @@
-import styles from'./App.module.css';
-import Table from "./Routes/Table";
-import Form from "./Routes/Form";
+
+import Table from "./Routes/Table/Table";
+import Form from "./Routes/Form/Form";
 import {Routes, Route} from "react-router-dom";
 const App = () => {
 

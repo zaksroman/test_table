@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import styles from './Form.module.css'
 
 const Form = () => {
-    const data = useSelector(state => state.data)
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -50,30 +51,36 @@ const Form = () => {
     const actionButton = name && height && mass && hair_color && skin_color
 
     return (
-        <div>
+        <div className={styles.form_container}>
             <input
+                className={styles.form_input}
                 type="text"
                 placeholder={'Имя'}
                 onChange={nameHandler}/>
             <input
+                className={styles.form_input}
                 type="number"
                 step="1"
                 placeholder={'Рост'}
                 onChange={heightHandler}/>
             <input
+                className={styles.form_input}
                 type="number"
                 step="1"
                 placeholder={'Вес'}
                 onChange={massHandler}/>
             <input
+                className={styles.form_input}
                 type="text"
                 placeholder={'Цвет волос'}
                 onChange={hair_colorHandler}/>
             <input
+                className={styles.form_input}
                 type="text"
                 placeholder={'Цвет кожи'}
                 onChange={skin_colorHandler}/>
             <button
+                className={`${styles['form_button']} ${!actionButton ? styles.disabled : ''}`}
                 onClick={addRow}
                 disabled={!actionButton}
             >Добавить строку

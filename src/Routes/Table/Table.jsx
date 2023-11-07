@@ -1,7 +1,8 @@
-import DataTable from "../Components/Table/DataTable";
+import DataTable from "../../Components/Table/DataTable";
 import {useState} from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from "react-router-dom";
+import styles from './Table.module.css'
 
 const Table = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -35,10 +36,12 @@ const Table = () => {
 
 
     return (
-        <div>
-            <button onClick={fetchData}>Загрузить данные</button>
-            <button onClick={clearData}>Очистить таблицу</button>
-            <button onClick={handleClick}>Добавить строку</button>
+        <div className={styles.tableContainer}>
+            <div>
+                <button onClick={fetchData} className={styles.button}>Загрузить данные</button>
+                <button onClick={clearData} className={styles.button}>Очистить таблицу</button>
+                <button onClick={handleClick} className={styles.button}>Добавить строку</button>
+            </div>
             {isLoading ? (
                 <p>Загрузка данных...</p>
             ) : (
