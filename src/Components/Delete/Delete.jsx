@@ -29,12 +29,14 @@ const Delete = ({item}) => {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <p>Вы действительно хотите удалить строку?</p>
-                            <button onClick={leaveHandler}>Оставить</button>
-                            <button onClick={deleteHandler}>Удалить</button>
+                            <div>
+                                <button onClick={leaveHandler} className={styles.button}>Оставить</button>
+                                <button onClick={deleteHandler} className={styles.button}>Удалить</button>
+                            </div>
                         </div>
                     </div>
             )}
-            <button onClick={modalHandler}>Удалить</button>
+            <button onClick={modalHandler} className={styles.button}>Удалить</button>
         </div>
     );
 };

@@ -9,11 +9,9 @@ const DataItem = ({item}) => (
         <td>{item.mass}</td>
         <td>{item.hair_color}</td>
         <td>{item.skin_color}</td>
-        <td>
-            <Delete
-                item={item}
-            />
-        </td>
+        <Delete
+            item={item}
+        />
     </tr>
 );
 
