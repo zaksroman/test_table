@@ -7,7 +7,6 @@ const DataTable = () => {
     const [sortBy, setSortBy] = useState(null);
     const [sortOrder, setSortOrder] = useState('asc');
 
-
     const sortData = (field) => {
         return [...data].sort((a, b) => {
             if (field === 'height' || field === 'weight') {
